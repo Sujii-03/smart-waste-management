@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:16-alpine
+    env_file: .env
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      retries: 10
+  web:
+    build:
+      context: .
+      args:
+        INSTALL_AI: ${INSTALL_AI:-0}
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    ports: ["5000:5000"]
+    volumes: [./uploads:/app/uploads, ./ai_model/model:/app/ai_model/model]
+    depends_on:
+      db: {condition: service_healthy}
+    command: sh -c "flask init-db && flask create-admin && gunicorn -b 0.0.0.0:5000 -w 2 run:app"
+volumes:
+  pgdata:

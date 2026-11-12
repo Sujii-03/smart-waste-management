@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block body %}
+{% macro nav(href,icon,label) %}<a class="nav-l {{ 'active' if request.path==href }}" href="{{ href }}"><i class="bi bi-{{ icon }}"></i>{{ label }}</a>{% endmacro %}
+<aside class="sidebar" id="side"><a class="brand fs-4 text-white text-decoration-none mb-4" href="/"><i class="bi bi-recycle text-success"></i> SmartWaste</a>
+{% if user.role=='admin' %}{{ nav('/admin','speedometer2','Admin Dashboard') }}{% endif %}
+{{ nav('/dashboard','grid-1x2','Dashboard') }}{{ nav('/classify','camera','Classify Waste') }}
+{{ nav('/collect','truck','Request Collection') }}{{ nav('/history','clock-history','Collection History') }}
+<div class="mt-auto text-white-50 small mb-2">{{ user.full_name }}</div>
+<button class="btn btn-ghost text-white border-white" id="logout"><i class="bi bi-box-arrow-left"></i> Log out</button></aside>
+<main class="main"><button class="btn btn-light d-lg-none mb-3" onclick="document.getElementById('side').classList.toggle('open')"><i class="bi bi-list"></i></button>
+{% block content %}{% endblock %}</main>{% endblock %}

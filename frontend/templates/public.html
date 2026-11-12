@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block body %}
+<nav class="navbar navbar-expand-lg navbar-eco sticky-top"><div class="container">
+<a class="navbar-brand brand" href="/"><i class="bi bi-recycle"></i> SmartWaste</a>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nv"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="nv"><ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+<li class="nav-item"><a class="nav-link" href="/about">About</a></li><li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+{% if user %}<li><a class="btn btn-eco" href="/{{ 'admin' if user.role=='admin' else 'dashboard' }}">Dashboard</a></li>
+{% else %}<li><a class="nav-link" href="/login">Log in</a></li><li><a class="btn btn-eco" href="/register">Get started</a></li>{% endif %}
+</ul></div></div></nav>
+{% block content %}{% endblock %}
+<footer class="text-center text-muted py-4 small">© Smart Waste Management System</footer>{% endblock %}

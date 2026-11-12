@@ -1,0 +1,9 @@
+{% extends "app.html" %}{% block title %}Collection{% endblock %}{% block page %}collect{% endblock %}{% block content %}
+<h3 class="fw-bold mb-3">Request waste collection</h3><div class="row g-3"><div class="col-lg-5"><div class="cardx p-4">
+<div class="alert alert-danger d-none" id="err"></div><form id="f" novalidate>
+<div class="mb-3"><label class="form-label">Waste category</label><select name="category" class="form-select" required>{% for c in ['plastic','paper','metal','glass','organic'] %}<option value="{{ c }}">{{ c|capitalize }}</option>{% endfor %}</select></div>
+<div class="mb-3"><label class="form-label">Quantity (kg)</label><input type="number" step="0.1" min="0.1" name="quantity" class="form-control" required><div class="invalid-feedback"></div></div>
+<div class="mb-3"><label class="form-label">Pickup address</label><textarea name="address" rows="3" class="form-control" required></textarea><div class="invalid-feedback"></div></div>
+<div class="mb-3"><label class="form-label">Preferred pickup date</label><input type="date" name="pickup_date" class="form-control" required><div class="invalid-feedback"></div></div>
+<button class="btn btn-eco w-100">Submit request</button></form></div></div>
+<div class="col-lg-7"><div class="cardx p-4"><div class="d-flex justify-content-between"><h6>Latest requests</h6><a href="/history">View all</a></div><div id="list"></div></div></div></div>{% endblock %}

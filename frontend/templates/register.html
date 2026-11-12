@@ -1,0 +1,6 @@
+{% extends "public.html" %}{% block title %}Register{% endblock %}{% block page %}register{% endblock %}{% block content %}
+<div class="container py-5"><div class="auth-box mx-auto cardx p-4 p-md-5"><h3 class="fw-bold mb-3">Create your account</h3>
+<div class="alert alert-danger d-none" id="err"></div>
+<form id="f" novalidate>{% for n,l,t in [('full_name','Full name','text'),('email','Email','email'),('phone','Phone number','tel'),('password','Password (min 8 characters)','password'),('confirm_password','Confirm password','password')] %}
+<div class="mb-3"><label class="form-label">{{ l }}</label><input type="{{ t }}" name="{{ n }}" class="form-control" required><div class="invalid-feedback"></div></div>{% endfor %}
+<button class="btn btn-eco w-100">Register</button></form><p class="text-center mt-3 mb-0 small">Already registered? <a href="/login">Log in</a></p></div></div>{% endblock %}

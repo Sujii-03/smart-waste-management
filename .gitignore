@@ -1,0 +1,55 @@
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+/secrets/
+
+# Python environments, bytecode, and test/build output
+venv/
+.venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local databases and runtime data
+*.db
+*.sqlite
+*.sqlite3
+*.db-*
+*.sqlite-*
+*.sqlite3-*
+instance/
+uploads/*
+!uploads/.gitkeep
+
+# Downloaded training data and generated AI model artifacts
+ai_model/dataset/*
+ai_model/model/*
+!ai_model/model/.gitkeep
+
+# Temporary files and OS metadata
+*.tmp
+*.temp
+*.bak
+*.swp
+*.log
+*.orig
+*.rej
+*~
+.DS_Store
+Thumbs.db

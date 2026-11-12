@@ -1,0 +1,8 @@
+{% extends "app.html" %}{% block title %}Dashboard{% endblock %}{% block page %}dashboard{% endblock %}{% block content %}
+<h3 class="fw-bold mb-3">Hello, {{ user.full_name.split()[0] }}</h3>
+<div class="row g-3 mb-4">{% for k,l,i in [('total','Total analyzed','collection'),('plastic','Plastic','cup-straw'),('paper','Paper','file-earmark-text'),('metal','Metal','gear'),('glass','Glass','cup'),('organic','Organic','flower1')] %}
+<div class="col-6 col-lg-2"><div class="cardx stat p-3"><div class="icon-b mb-2"><i class="bi bi-{{ i }}"></i></div><div class="v" id="s-{{ k }}">–</div><div class="l">{{ l }}</div></div></div>{% endfor %}</div>
+<div class="row g-3 mb-4"><div class="col-lg-5"><div class="cardx p-3"><h6>By category</h6><canvas id="c-cat" height="220"></canvas></div></div>
+<div class="col-lg-7"><div class="cardx p-3"><h6>Monthly classifications</h6><canvas id="c-mon" height="130"></canvas></div></div></div>
+<div class="cardx p-3"><div class="d-flex justify-content-between"><h6>Recent classifications</h6><a href="/classify" class="btn btn-eco btn-sm">Classify new</a></div>
+<div class="table-responsive"><table class="table align-middle mb-0"><thead><tr><th></th><th>Category</th><th>Confidence</th><th>Date</th></tr></thead><tbody id="recent"></tbody></table></div></div>{% endblock %}

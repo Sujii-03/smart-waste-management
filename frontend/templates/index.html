@@ -1,0 +1,23 @@
+{% extends "public.html" %}{% block title %}Home{% endblock %}{% block content %}
+<section class="hero"><div class="container"><div class="row align-items-center"><div class="col-lg-7">
+<span class="badge bg-light text-success mb-3">AI-powered sustainability</span>
+<h1>Sort smarter.<br>Waste less.</h1>
+<p class="lead my-4 opacity-75">Snap a photo of your waste, let our model identify it, get disposal and recycling guidance, and schedule a pickup, all in one place.</p>
+<a class="btn btn-light btn-lg fw-semibold me-2" href="/register">Create free account</a><a class="btn btn-outline-light btn-lg" href="/login">Log in</a>
+</div><div class="col-lg-5 d-none d-lg-block text-center"><i class="bi bi-recycle" style="font-size:12rem;opacity:.25"></i></div></div></div></section>
+<section class="container py-5"><div class="row g-4 align-items-center"><div class="col-lg-6"><h2 class="fw-bold">Why waste sorting matters</h2>
+<p class="text-muted">Mixed waste is hard to recycle, and food waste in landfills releases methane. Sorting at the source keeps recyclables useful, cuts landfill load and lowers emissions. Knowing what goes where is the first step.</p></div>
+<div class="col-lg-6"><div class="row g-3">{% for i,t in [('recycle','Recycle more'),('tree','Protect nature'),('cloud-slash','Cut emissions'),('people','Build habits')] %}
+<div class="col-6"><div class="cardx p-3 text-center"><div class="icon-b mx-auto mb-2"><i class="bi bi-{{ i }}"></i></div><b>{{ t }}</b></div></div>{% endfor %}</div></div></div></section>
+<section class="container pb-5"><h2 class="fw-bold text-center mb-4">Features</h2><div class="row g-4">
+{% for i,t,d in [('camera','AI classification','Identifies plastic, paper, metal, glass and organic waste from a photo, with a confidence score.'),
+('lightbulb','Disposal guidance','Clear disposal and recycling advice for every category.'),
+('truck','Collection requests','Book a pickup and track its status from request to completion.'),
+('bar-chart-line','Live analytics','Charts built from your own classification history.'),
+('shield-check','Secure by design','Hashed passwords, validated uploads and role-based access.'),
+('speedometer2','Admin tools','Manage users and requests and export CSV or Excel reports.')] %}
+<div class="col-md-6 col-lg-4"><div class="cardx hover p-4 h-100"><div class="icon-b mb-3"><i class="bi bi-{{ i }}"></i></div><h5>{{ t }}</h5><p class="text-muted mb-0">{{ d }}</p></div></div>{% endfor %}</div></section>
+<section class="container pb-5"><h2 class="fw-bold text-center mb-4">How it works</h2><div class="row g-4 text-center">
+{% for n,t,d in [(1,'Upload','Add a photo of your waste item.'),(2,'Classify','The model predicts the category.'),(3,'Dispose','Follow the recommended disposal method.'),(4,'Schedule','Request a pickup if needed.')] %}
+<div class="col-6 col-lg-3"><div class="step-n mx-auto mb-2">{{ n }}</div><h6>{{ t }}</h6><p class="text-muted small">{{ d }}</p></div>{% endfor %}</div></section>
+{% endblock %}

@@ -1,0 +1,4 @@
+{% extends "public.html" %}{% block title %}Contact{% endblock %}{% block content %}
+<div class="container py-5" style="max-width:640px"><div class="cardx p-4 text-center"><div class="icon-b mx-auto mb-3"><i class="bi bi-envelope"></i></div>
+<h3>Get in touch</h3><p class="text-muted">Questions, feedback or a password reset? Email us.</p>
+<a class="btn btn-eco" href="mailto:{{ contact_email }}">{{ contact_email }}</a></div></div>{% endblock %}

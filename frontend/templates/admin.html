@@ -1,0 +1,12 @@
+{% extends "app.html" %}{% block title %}Admin{% endblock %}{% block page %}admin{% endblock %}{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-3"><h3 class="fw-bold">Admin dashboard</h3>
+<div class="dropdown"><button class="btn btn-eco dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-download"></i> Reports</button><ul class="dropdown-menu">
+{% for k in ['users','classifications','requests'] %}<li><a class="dropdown-item" href="/api/admin/reports/{{ k }}.csv">{{ k|capitalize }} (CSV)</a></li><li><a class="dropdown-item" href="/api/admin/reports/{{ k }}.xlsx">{{ k|capitalize }} (Excel)</a></li>{% endfor %}</ul></div></div>
+<div class="row g-3 mb-4">{% for k,l,i in [('users','Registered users','people'),('classifications','Classifications','camera'),('requests','Collection requests','truck'),('pending','Pending','hourglass-split'),('completed','Completed','check2-circle')] %}
+<div class="col-6 col-lg"><div class="cardx stat p-3"><div class="icon-b mb-2"><i class="bi bi-{{ i }}"></i></div><div class="v" id="a-{{ k }}">–</div><div class="l">{{ l }}</div></div></div>{% endfor %}</div>
+<div class="row g-3 mb-4"><div class="col-lg-4"><div class="cardx p-3"><h6>Waste categories</h6><canvas id="c-cat" height="220"></canvas></div></div>
+<div class="col-lg-4"><div class="cardx p-3"><h6>Request status</h6><canvas id="c-st" height="220"></canvas></div></div>
+<div class="col-lg-4"><div class="cardx p-3"><h6>Monthly activity</h6><canvas id="c-mon" height="220"></canvas></div></div></div>
+<div class="cardx p-3 mb-4"><div class="d-flex justify-content-between"><h6>Collection requests</h6><select id="flt" class="form-select form-select-sm w-auto"><option value="">All</option><option>pending</option><option>approved</option><option>completed</option><option>cancelled</option></select></div>
+<div class="table-responsive"><table class="table align-middle mb-0"><thead><tr><th>#</th><th>User</th><th>Category</th><th>Qty</th><th>Pickup</th><th>Status</th><th>Action</th></tr></thead><tbody id="reqs"></tbody></table></div></div>
+<div class="cardx p-3"><h6>Users</h6><div class="table-responsive"><table class="table align-middle mb-0"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th></th></tr></thead><tbody id="users"></tbody></table></div></div>{% endblock %}
